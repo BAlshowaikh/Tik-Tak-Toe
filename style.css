@@ -1,0 +1,178 @@
+body {
+  /* background-image: url("./resources/images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background-color: black;
+  color: white;
+  margin: 0;
+  font-family: "Pixelify Sans", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  /* Flexbox styling*/
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+nav button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+nav img {
+  /* width: 120px;
+  height: 60px; */
+  width: 15vmin;
+  height: auto;
+}
+
+nav .title {
+  /* Below code to center in the nav*/
+  /* font-size: 8vmin;
+  color: #b083f9;
+  text-align: center;
+  flex-grow: 1; */
+
+  /* Below code to center in the whole page*/
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8vmin; /* Keep this for responsiveness */
+  color: #b083f9;
+  text-align: center;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* This to make 3 cols*/
+  grid-template-rows: repeat(3, 1fr); /* This to make 3 rows*/
+  width: 70vmin;
+  height: 70vmin;
+  gap: 2vmin;
+}
+
+.cell {
+  --fill: #b083f9;
+
+  width: auto;
+  height: auto;
+  border: 5px solid var(--fill);
+  background-color: white;
+  box-shadow: 0 0 25px rgba(176, 131, 249, 0.7);
+
+  /* Note to me:
+  The below code divides the cell into 4 background each of them will be 0 to 0 px so they don't show ;*/
+  background: linear-gradient(var(--fill, #b083f9) 0 0) top left,
+    linear-gradient(var(--fill, #b083f9) 0 0) top right,
+    linear-gradient(var(--fill, #b083f9) 0 0) bottom left,
+    linear-gradient(var(--fill, #b083f9) 0 0) bottom right;
+  background-repeat: no-repeat;
+  background-size: 0 0, 0 0, 0 0, 0 0;
+
+  /* Note to me: the steps() gives that pixel-y, blocky fill */
+  transition: background-size 0.6s steps(8);
+  font-size: 10vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:hover {
+  /* Note to me: a bit over 50% so the corners meet without a gap */
+  background-size: 51% 51%, 51% 51%, 51% 51%, 51% 51%;
+  cursor: pointer;
+}
+
+/* When the cell is being clicked */
+.cell.cell-fill {
+  background-size: 51% 51%, 51% 51%, 51% 51%, 51% 51%;
+  cursor: default;
+}
+
+.half-circle-right,
+.half-circle-left {
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0 0 25px rgba(176, 131, 249, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.half-circle-left {
+  width: 50vmin;
+  height: 25vmin;
+  background-color: #b083f9;
+  border-top-left-radius: 20vmin;
+  border-top-right-radius: 20vmin;
+  border-bottom-right-radius: 20vmin;
+  left: 0;
+}
+
+.half-circle-right {
+  width: 50vmin;
+  height: 25vmin;
+  background-color: #b083f9;
+  border-top-left-radius: 20vmin;
+  border-top-right-radius: 20vmin;
+  border-bottom-left-radius: 20vmin;
+  right: 0;
+}
+
+/* active state class */
+.half-circle-right.active,
+.half-circle-left.active {
+  opacity: 1;
+}
+
+.half-circle-right span,
+.half-circle-left span {
+  font-size: 5vmin;
+}
+
+/* Message div */
+#message-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#message-box {
+  background-color: #b083f9;
+  color: white;
+  padding: 5vmin;
+  font-size: 5vmin;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 50px rgba(176, 131, 249, 0.9);
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none; /* Don't accept any clicks when it's hidden*/
+}

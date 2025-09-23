@@ -1,16 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
     <title>Tic-Tac-Toe</title>
   </head>
   <body>
     <!-- Build your game board, instructions, and score displays here! -->
 
-    
-    <!-- Build your game board, instructions, and score displays here! -->
+    <!-- Div for the control buttons-->
+    <nav>
+      <section>
+        <button type="button" id="pauseBtn">
+          <img src="./resources/images/pause-img.png" alt="Pause the game" />
+        </button>
+        <button type="button" id="restartBtn">
+          <img
+            src="./resources/images/restart-img.png"
+            alt="Restart the game"
+          />
+        </button>
+      </section>
+      <div class="title">Tik Tak Toe Game!</div>
+    </nav>
+    <div class="board-container">
+      <!-- Div for the actual board -->
+      <div id="board">
+        <div class="cell" id="cell1"></div>
+        <div class="cell" id="cell2"></div>
+        <div class="cell" id="cell3"></div>
+        <div class="cell" id="cell4"></div>
+        <div class="cell" id="cell5"></div>
+        <div class="cell" id="cell6"></div>
+        <div class="cell" id="cell7"></div>
+        <div class="cell" id="cell8"></div>
+        <div class="cell" id="cell9"></div>
+      </div>
+
+      <div class="half-circle-left" id="turnA">
+        <span>It's player A turn</span>
+      </div>
+
+      <div class="half-circle-right" id="turnB">
+        <span>It's player B turn</span>
+      </div>
+    </div>
+
+    <!-- Div for displaying a message either winning or a draw -->
+    <div id="message-overlay" class="hidden">
+      <div id="message-box">
+        <p id="message-text"></p>
+      </div>
+    </div>
   </body>
 </html>
